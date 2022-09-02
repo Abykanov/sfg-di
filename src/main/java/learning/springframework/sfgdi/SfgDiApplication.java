@@ -16,9 +16,9 @@ public class SfgDiApplication {
 
 		MyController myController = (MyController) applicationContext.getBean("myController");
 
-		String greeting = myController.sayHello();
+		System.out.println("----------- Primary");
 
-		System.out.println(greeting);
+		System.out.println(myController.sayHello());
 
 		System.out.println("-------------- Property");
 
