@@ -1,4 +1,4 @@
-package learning.springframework.sfgdi.services;
+package learning.springframework.pets;
 
 public interface PetService {
 
