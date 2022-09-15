@@ -5,12 +5,10 @@ import learning.springframework.pets.PetServiceFactory;
 import learning.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import learning.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import learning.springframework.sfgdi.services.*;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
 @Configuration
+@ImportResource("classpath:sfgdi-config.xml")
 public class GreetingServiceConfig {
     @Bean
     EnglishGreetingRepository englishGreetingRepository() {
@@ -34,7 +32,7 @@ public class GreetingServiceConfig {
         return new PrimaryGreetingService();
     }
 
-    @Bean
+//    @Bean
     ConstructorGreetingService constructorGreetingService() {
         return new ConstructorGreetingService();
     }
