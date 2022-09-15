@@ -1,5 +1,7 @@
 package learning.springframework.sfgdi.config;
 
+import learning.springframework.pets.PetService;
+import learning.springframework.pets.PetServiceFactory;
 import learning.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import learning.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import learning.springframework.sfgdi.services.*;
@@ -45,5 +47,22 @@ public class GreetingServiceConfig {
     @Bean
     SetterInjectedGreetingService setterInjectedGreetingService() {
         return new SetterInjectedGreetingService();
+    }
+
+    @Bean
+    PetServiceFactory petServiceFactory() {
+        return new PetServiceFactory();
+    }
+
+    @Bean
+    @Profile({"dog", "default"})
+    PetService dogPetService(PetServiceFactory petServiceFactory) {
+        return petServiceFactory.getPetService("dog");
+    }
+
+    @Bean
+    @Profile("cat")
+    PetService catPetService(PetServiceFactory petServiceFactory) {
+        return petServiceFactory.getPetService("cat");
     }
 }
