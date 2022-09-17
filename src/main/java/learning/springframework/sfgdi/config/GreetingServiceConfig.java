@@ -6,20 +6,17 @@ import learning.springframework.sfgdi.datasource.FakeDataSource;
 import learning.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import learning.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import learning.springframework.sfgdi.services.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 @Configuration
 @ImportResource("classpath:sfgdi-config.xml")
 public class GreetingServiceConfig {
     @Bean
-    FakeDataSource fakeDataSource(@Value("${learning.username}") String username,
-                                  @Value("${learning.password}") String password,
-                                  @Value("${learning.jdbcurl}") String jdbcUrl) {
+    FakeDataSource fakeDataSource(SfgConfiguration sfgConfiguration) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcUrl);
+        fakeDataSource.setUsername(sfgConfiguration.getUsername());
+        fakeDataSource.setPassword(sfgConfiguration.getPassword());
+        fakeDataSource.setJdbcUrl(sfgConfiguration.getJdbcUrl());
         return fakeDataSource;
     }
 
@@ -46,9 +43,9 @@ public class GreetingServiceConfig {
     }
 
 //    @Bean
-    ConstructorGreetingService constructorGreetingService() {
-        return new ConstructorGreetingService();
-    }
+//    ConstructorGreetingService constructorGreetingService() {
+//        return new ConstructorGreetingService();
+//    }
 
     @Bean
     PropertyInjectedGreetingService propertyInjectedGreetingService() {
