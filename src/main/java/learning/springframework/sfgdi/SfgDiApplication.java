@@ -62,7 +62,7 @@ public class SfgDiApplication {
 		PrototypeBean prototypeBean2 = applicationContext.getBean("prototypeBean", PrototypeBean.class);
 		System.out.println(prototypeBean2.getScope());
 
-		System.out.println("--------------------- datasource.properties ----------------------");
+		System.out.println("--------------------- application.properties ----------------------");
 
 		FakeDataSource fakeDataSource = applicationContext.getBean("fakeDataSource", FakeDataSource.class);
 		System.out.println(fakeDataSource.getUsername());
