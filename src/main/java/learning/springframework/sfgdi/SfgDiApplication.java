@@ -1,6 +1,7 @@
 package learning.springframework.sfgdi;
 
 import learning.springframework.sfgdi.controllers.*;
+import learning.springframework.sfgdi.datasource.FakeDataSource;
 import learning.springframework.sfgdi.services.PrototypeBean;
 import learning.springframework.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -60,6 +61,13 @@ public class SfgDiApplication {
 		System.out.println(prototypeBean1.getScope());
 		PrototypeBean prototypeBean2 = applicationContext.getBean("prototypeBean", PrototypeBean.class);
 		System.out.println(prototypeBean2.getScope());
+
+		System.out.println("--------------------- datasource.properties ----------------------");
+
+		FakeDataSource fakeDataSource = applicationContext.getBean("fakeDataSource", FakeDataSource.class);
+		System.out.println(fakeDataSource.getUsername());
+		System.out.println(fakeDataSource.getPassword());
+		System.out.println(fakeDataSource.getJdbcUrl());
 	}
 
 }
